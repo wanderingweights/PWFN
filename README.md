@@ -110,7 +110,7 @@ If our work proves instrumental in your research, please consider citing:
 @article{subia2023probabilistic,
   title={Probabilistic Weight Fixing: Large-scale training of neural network weight uncertainties for quantization},
   author={Subia-Waud, Christopher and Dasmahapatra, Srinandan},
-  journal={NeurIPS 2023},
+  journal={arXiv preprint arXiv:2309.13575},
   year={2023}
 }
 ```
