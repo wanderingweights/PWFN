@@ -40,7 +40,7 @@ Our experiments are conducted on the ImageNet dataset with a variety of models, 
 To initiate the experiments:
 
 ```bash
-python main.py --lr <learning_rate> --start_epochs <initial_epochs> --rest_epochs <subsequent_epochs> --reg <regularization> --b <b_value> --data <dataset_name> --start_sigma <initial_sigma> --end_sigma <final_sigma> --reg_function <regularization_function> --data_loc /path/to/dataset --model <chosen_model> --prior <prior> --sigma_join <sigma_join>
+python wfn_bayes.py --lr <learning_rate> --start_epochs <initial_epochs> --rest_epochs <subsequent_epochs> --reg <regularization> --b <b_value> --data <dataset_name> --start_sigma <initial_sigma> --end_sigma <final_sigma> --reg_function <regularization_function> --data_loc /path/to/dataset --model <chosen_model> --prior <prior> --sigma_join <sigma_join>
 ```
 
 **Variables Explanation:**
@@ -64,31 +64,31 @@ To replicate the paper experiment settings ->
 1. For model `deit_small_patch16_224`:
 
 ```bash
-python main.py --model deit_small_patch16_224 --reg_function linear --data imagenet --lr 0.001 --start_epochs 1 --rest_epochs 3 --reg 0.00048828125 --start_delta 1.0 --end_delta 1.0 --inc 2 --b 7 --sigma_join std_mu --want_to_save --prior --zero_fix
+python wfn_bayes.py  --model deit_small_patch16_224 --reg_function linear --data imagenet --lr 0.001 --start_epochs 1 --rest_epochs 3 --reg 0.00048828125 --start_delta 1.0 --end_delta 1.0 --inc 2 --b 7 --sigma_join std_mu --want_to_save --prior --zero_fix
 ```
 
 2. For model `deit_tiny_patch16_224`:
 
 ```bash
-python main.py --model deit_tiny_patch16_224 --reg_function linear --data imagenet --lr 0.001 --start_epochs 1 --rest_epochs 3 --reg 0.00048828125 --start_delta 1.0 --end_delta 1.0 --inc 2 --b 7 --sigma_join std_mu --want_to_save --prior --zero_fix
+python wfn_bayes.py  --model deit_tiny_patch16_224 --reg_function linear --data imagenet --lr 0.001 --start_epochs 1 --rest_epochs 3 --reg 0.00048828125 --start_delta 1.0 --end_delta 1.0 --inc 2 --b 7 --sigma_join std_mu --want_to_save --prior --zero_fix
 ```
 
 3. For model `resnet18`:
 
 ```bash
-python main.py --model resnet18 --reg_function linear --data imagenet --lr 0.001 --start_epochs 1 --rest_epochs 3 --reg 0.00048828125 --start_delta 1.0 --end_delta 1.0 --inc 2 --b 7 --sigma_join std_mu --want_to_save --prior --zero_fix
+python wfn_bayes.py  --model resnet18 --reg_function linear --data imagenet --lr 0.001 --start_epochs 1 --rest_epochs 3 --reg 0.00048828125 --start_delta 1.0 --end_delta 1.0 --inc 2 --b 7 --sigma_join std_mu --want_to_save --prior --zero_fix
 ```
 
 4. For model `resnet34`:
 
 ```bash
-python main.py --model resnet34 --reg_function linear --data imagenet --lr 0.001 --start_epochs 1 --rest_epochs 3 --reg 0.00048828125 --start_delta 1.0 --end_delta 1.0 --inc 2 --b 7 --sigma_join std_mu --want_to_save --prior --zero_fix
+python wfn_bayes.py  --model resnet34 --reg_function linear --data imagenet --lr 0.001 --start_epochs 1 --rest_epochs 3 --reg 0.00048828125 --start_delta 1.0 --end_delta 1.0 --inc 2 --b 7 --sigma_join std_mu --want_to_save --prior --zero_fix
 ```
 
 5. For model `resnet50`:
 
 ```bash
-python main.py --model resnet50 --reg_function linear --data imagenet --lr 0.001 --start_epochs 1 --rest_epochs 3 --reg 0.00048828125 --start_delta 1.0 --end_delta 1.0 --inc 2 --b 7 --sigma_join std_mu --want_to_save --prior --zero_fix
+python wfn_bayes.py  --model resnet50 --reg_function linear --data imagenet --lr 0.001 --start_epochs 1 --rest_epochs 3 --reg 0.00048828125 --start_delta 1.0 --end_delta 1.0 --inc 2 --b 7 --sigma_join std_mu --want_to_save --prior --zero_fix
 ```
 
 ---
