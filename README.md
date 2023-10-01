@@ -8,10 +8,13 @@ You can access the paper on [arXiv](https://arxiv.org/abs/2309.13575).
 
 ## Key Features
 
-- Probabilistic framework anchored in Bayesian neural networks (BNNs).
-- Variational relaxation for discerning weight movement to cluster centers.
-- Novel initialization setting and regularization term for adept BNN training.
-- Iterative clustering method for superior compressibility.
+Key Features
+
+* Consideration of Weight Position: Emphasis on the role of weight position in determining weight movement during quantization.
+* Initialization & Regularization: Introduction of a specific initialization setting and a regularization term, facilitating the training of BNNs on extensive datasets and model combinations.
+* Noise-Tolerance Guidance: Use of learned sigma terms to assist in network compression decisions.
+* Improved Compressibility & Accuracy: Enhanced compressibility and accuracy observed across various architectures, including ResNet models and transformer-based designs.
+*   Results with DeiT-Tiny: Notable accuracy improvement on ImageNet with a quantized DeiT-Tiny, representing its weights with fewer unique values.
 
 ## Quick Start
 
@@ -47,8 +50,8 @@ python main.py --lr <learning_rate> --start_epochs <initial_epochs> --rest_epoch
 - `<regularization>`: Regularization value (e.g., 1.0).
 - `<b_value>`: B-value parameter used in the method (e.g., 7).
 - `<dataset_name>`: Name of the dataset used for the experiment (e.g., 'imagenet').
-- `<initial_sigma>`: Initial sigma value for the weight distributions (e.g., 1).
-- `<final_sigma>`: Final sigma value for the weight distributions (e.g., 0.5).
+- `<initial_delta>`: Initial delta value for the weight distributions (e.g., 1, in the paper initial = final)
+- `<final_delta>`: Final delta value for the weight distributions
 - `<regularization_function>`: Regularization function to be used (e.g., 'linear').
 - `<chosen_model>`: Desired model architecture from the Timm library, such as `resnet18`, `resnet34`, `resnet50`, `densenet161`, `deit_small`, or `deit_tiny`.
 
