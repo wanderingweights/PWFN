@@ -40,20 +40,59 @@ Our experiments are conducted on the ImageNet dataset with a variety of models, 
 To initiate the experiments:
 
 ```bash
-python main.py --lr <learning_rate> --start_epochs <initial_epochs> --rest_epochs <subsequent_epochs> --reg <regularization> --b <b_value> --data <dataset_name> --start_sigma <initial_sigma> --end_sigma <final_sigma> --reg_function <regularization_function> --data_loc /path/to/dataset --model <chosen_model>
+python main.py --lr <learning_rate> --start_epochs <initial_epochs> --rest_epochs <subsequent_epochs> --reg <regularization> --b <b_value> --data <dataset_name> --start_sigma <initial_sigma> --end_sigma <final_sigma> --reg_function <regularization_function> --data_loc /path/to/dataset --model <chosen_model> --prior <prior> --sigma_join <sigma_join>
 ```
 
 **Variables Explanation:**
 - `<learning_rate>`: Learning rate for the optimizer (e.g., 0.001).
-- `<initial_epochs>`: Number of epochs for the initial training phase (e.g., 3).
+- `<initial_epochs>`: Number of epochs for the initial training phase (e.g., 1).
 - `<subsequent_epochs>`: Number of epochs for the subsequent training phases (e.g., 3).
-- `<regularization>`: Regularization value (e.g., 1.0).
+- `<regularization>`: Regularization value (0.0004882812 in the paper)
 - `<b_value>`: B-value parameter used in the method (e.g., 7).
-- `<dataset_name>`: Name of the dataset used for the experiment (e.g., 'imagenet').
+- `<dataset_name>`: Name of the dataset used for the experiment (e.g., 'imagenet', 'cifar10').
 - `<initial_delta>`: Initial delta value for the weight distributions (e.g., 1, in the paper initial = final)
 - `<final_delta>`: Final delta value for the weight distributions
 - `<regularization_function>`: Regularization function to be used (e.g., 'linear').
 - `<chosen_model>`: Desired model architecture from the Timm library, such as `resnet18`, `resnet34`, `resnet50`, `densenet161`, `deit_small`, or `deit_tiny`.
+- `<prior>`: Do we apply the prior initialisation based on pow2 distances
+-  `<sigma_join>`: What method do we use to aggregate sigmas after a weight is clustered `std_mu` is used in the paper other options include `allow_retraining` which leaves the sigmas as they are and allows them to continue to change after the mu value is fixed and `keep_the_same_divide_by_10` which simply makes the sigma smaller by a factor of 10. 
+
+
+To replicate the paper experiment settings -> 
+
+
+1. For model `deit_small_patch16_224`:
+
+```bash
+python main.py --model deit_small_patch16_224 --reg_function linear --data imagenet --lr 0.001 --start_epochs 1 --rest_epochs 3 --reg 0.00048828125 --start_delta 1.0 --end_delta 1.0 --inc 2 --b 7 --sigma_join std_mu --want_to_save --prior --zero_fix
+```
+
+2. For model `deit_tiny_patch16_224`:
+
+```bash
+python main.py --model deit_tiny_patch16_224 --reg_function linear --data imagenet --lr 0.001 --start_epochs 1 --rest_epochs 3 --reg 0.00048828125 --start_delta 1.0 --end_delta 1.0 --inc 2 --b 7 --sigma_join std_mu --want_to_save --prior --zero_fix
+```
+
+3. For model `resnet18`:
+
+```bash
+python main.py --model resnet18 --reg_function linear --data imagenet --lr 0.001 --start_epochs 1 --rest_epochs 3 --reg 0.00048828125 --start_delta 1.0 --end_delta 1.0 --inc 2 --b 7 --sigma_join std_mu --want_to_save --prior --zero_fix
+```
+
+4. For model `resnet34`:
+
+```bash
+python main.py --model resnet34 --reg_function linear --data imagenet --lr 0.001 --start_epochs 1 --rest_epochs 3 --reg 0.00048828125 --start_delta 1.0 --end_delta 1.0 --inc 2 --b 7 --sigma_join std_mu --want_to_save --prior --zero_fix
+```
+
+5. For model `resnet50`:
+
+```bash
+python main.py --model resnet50 --reg_function linear --data imagenet --lr 0.001 --start_epochs 1 --rest_epochs 3 --reg 0.00048828125 --start_delta 1.0 --end_delta 1.0 --inc 2 --b 7 --sigma_join std_mu --want_to_save --prior --zero_fix
+```
+
+---
+
 
 ### Results
 
